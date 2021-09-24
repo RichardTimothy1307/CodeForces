@@ -2,24 +2,31 @@
 using namespace std;
 
 
-int main() {
+
+int32_t main() {
 #ifndef ONLINE_JUDGE
 	freopen("ccallinput.txt", "r", stdin);
 	freopen("ccalloutput.txt", "w", stdout);
 #endif
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-
-	int w;
-	cin >> w;
-
-	if (w == 2) {
-		cout << "NO" << endl;
-	} else if (w % 2 == 0) {
-		cout << "YES" << endl;
-	} else {
-		cout << "NO" << endl;
+	int n;
+	cin >> n;
+	map<int, int> m;
+	for (int i = 0; i < n; i++) {
+		int x;
+		cin >> x;
+		m[x] = i + 1;
 	}
+	for (auto it : m) {
+		cout << it.second << " ";
+	}
+
+
+
+
+
+
 
 
 	return 0;

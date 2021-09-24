@@ -2,7 +2,8 @@
 using namespace std;
 
 
-int main() {
+
+int32_t main() {
 #ifndef ONLINE_JUDGE
 	freopen("ccallinput.txt", "r", stdin);
 	freopen("ccalloutput.txt", "w", stdout);
@@ -10,16 +11,15 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 
-	int w;
-	cin >> w;
-
-	if (w == 2) {
-		cout << "NO" << endl;
-	} else if (w % 2 == 0) {
-		cout << "YES" << endl;
-	} else {
-		cout << "NO" << endl;
+	string s;
+	map<char, int> m;
+	getline(cin, s);
+	for (int i = 0; i < s.size(); i++) {
+		if (s[i] >= 97 && s[i] <= 122) {
+			m[s[i]]++;
+		}
 	}
+	cout << m.size() << endl;
 
 
 	return 0;
