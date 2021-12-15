@@ -8,7 +8,7 @@ using namespace std;
 //double pi = 3.1415926536;
 #define  PB push_back
 #define  MP make_pair
-const int mod = 1e7;
+const int mod = 1e9 + 7;
 //vector<int> graph[(int)1000];  //defining array of vectors
 
 
@@ -17,31 +17,33 @@ const int mod = 1e7;
 
 void solve() {
 
-	int n, m;
-	cin >> n >> m;
-	int b = 0;
-	int w = 1;
+	int n, k;
+	cin >> n >> k;
 
-	for (int i = 0; i < n; i++) {
-		string s;
-		cin >> s;
-		for (int j = 0; j < m; j++) {
-			if (s[j] == '.') {
-				if ((i + j) % 2 == 0) {
-					s[j] = 'B';
-				}
-				else {
-					s[j] = 'W';
-				}
+	int a[n];
+	for (auto &it : a)cin >> it;
 
-			}
 
-			//cout << endl;
-		}
-		cout << s << endl;
+	sort(a, a + n);
 
+	int window = 2 * k;
+
+	int l = n - window;
+	//cout << l << endl;
+	int ans = 0;
+	for (int i = l; i < n - k; i++) {
+		ans += (a[i] / a[i + k]);
 	}
+//	cout << ans << endl;
+	for (int i = 0; i < l; i++) {
+		ans += a[i];
+	}
+
+	cout << ans << endl;
+
 }
+
+
 
 
 
@@ -57,7 +59,7 @@ signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int t = 1;
-	//cin >> t;
+	cin >> t;
 	while (t--) {
 		solve();
 	}

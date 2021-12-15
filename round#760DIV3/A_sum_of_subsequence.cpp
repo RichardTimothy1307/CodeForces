@@ -8,40 +8,38 @@ using namespace std;
 //double pi = 3.1415926536;
 #define  PB push_back
 #define  MP make_pair
-const int mod = 1e7;
+const int mod = 1e9 + 7;
 //vector<int> graph[(int)1000];  //defining array of vectors
-
-
-
 
 
 void solve() {
 
-	int n, m;
-	cin >> n >> m;
-	int b = 0;
-	int w = 1;
 
+	int n = 7;
+	int a[n];
 	for (int i = 0; i < n; i++) {
-		string s;
-		cin >> s;
-		for (int j = 0; j < m; j++) {
-			if (s[j] == '.') {
-				if ((i + j) % 2 == 0) {
-					s[j] = 'B';
-				}
-				else {
-					s[j] = 'W';
-				}
-
-			}
-
-			//cout << endl;
-		}
-		cout << s << endl;
-
+		cin >> a[i];
 	}
+
+	int last = a[6] - a[5];
+	int second_last = a[6] - a[4];
+	int third_last = a[6] - a[3];
+	int third_last_1 = a[6] - a[2];
+
+	if (last + second_last + third_last == a[6]) {
+		cout << last << " " << second_last << " " << third_last << endl;
+	}
+	else {
+		cout << last << " " << second_last << " " << third_last_1 << endl;
+	}
+
+
+
+
+
 }
+
+
 
 
 
@@ -57,7 +55,7 @@ signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	int t = 1;
-	//cin >> t;
+	cin >> t;
 	while (t--) {
 		solve();
 	}
