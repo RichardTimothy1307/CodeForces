@@ -12,57 +12,49 @@ const int mod = 1e9 + 7;
 //vector<int> graph[(int)1000];  //defining array of vectors
 
 
+
 void solve() {
 
+	int n;
+	cin >> n;
 
-	string s;
-	cin >> s;
-	//cout << s << endl;
-	map<char, int> m;
+	int a[n];
+	for (auto &it : a)cin >> it;
 
-	for (int i = 0; i < s.size(); i++) {
-		//cout << s[i] << endl;
-		m[s[i]]++;
-	}
-	vector<char> v;
+
 	int count = 0;
-	vector<char> v1;
-	for (auto it : m) {
-		if (it.second == 2) {
-			//cout << it.first << endl;
-			v.push_back(it.first);
-			count++;
+
+	int i = n - 1;
+
+	int k = a[n - 1];
+
+	//1 2 3 4 5  --> first we make 4=5  now we can make 2 3 == 4 5 //directly jump to 1
+
+	while (i >= 0) {
+
+		if (a[i] == k) {
+			i--;
 		}
 		else {
-			v1.push_back(it.first);
+			//cout << i << endl;
+			count++;
+			i = i - (n - 1 - i); //1 2 3 4 4  3 is not equal so we can directly make 2 3 == 4 4 and jump to 3-(5-3)-> 1
+			// all elements from n-i+1 to n become a[n]
+			//cout << i << endl;
 		}
-	}
 
-	string final;
-
-	int chars = 0;
-	for (int i = 0; i < v.size() ; i++) {
-		final += v[i];
 
 	}
-	for (int i = 0; i < v.size(); i++) {
-		final += v[i];
-	}
 
-	int j = 0;
-	for (j = 0; j < v1.size(); j++) {
-		final += v1[j];
-	}
 
-	cout << final << endl;
+	cout << count << endl;
 
 
 }
 
 
 
-
-signed main() {
+int32_t main() {
 #ifndef ONLINE_JUDGE
 	freopen("ccallinput.txt", "r", stdin);
 	freopen("ccalloutput.txt", "w", stdout);
